@@ -1,0 +1,36 @@
+﻿@page "/{slug}/{id:int}"
+@model IngressosAppWeb.Pages.DetailModel
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.Ingresso.ImagemUrl" class="img-fluid rounded" alt="@Model.Ingresso.NomeEvento">
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.Ingresso.NomeEvento</h2>
+            <p>@Model.Ingresso.Descricao</p>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>@Html.DisplayNameFor(model => model.Ingresso.DataEvento):</strong> @Html.DisplayFor(model => model.Ingresso.DataEvento)
+                </li>
+                <li class="list-group-item">
+                    <strong>@Html.DisplayNameFor(model => model.Ingresso.Localizacao):</strong> @Html.DisplayFor(model => model.Ingresso.Localizacao)
+                </li>
+                <li class="list-group-item">
+                    <strong>@Html.DisplayNameFor(model => model.Ingresso.Valor):</strong> @Html.DisplayFor(model => model.Ingresso.Valor)
+                </li>
+                <li class="list-group-item">
+                    <strong>@Html.DisplayNameFor(model => model.Ingresso.Categoria):</strong> @Html.DisplayFor(model => model.Ingresso.Categoria)
+                </li>
+                <li class="list-group-item">
+                    <strong>@Html.DisplayNameFor(model => model.Ingresso.QuantidadeDisponivel):</strong> @Html.DisplayFor(model => model.Ingresso.QuantidadeDisponivel) ingressos disponíveis
+                 </li>
+                <li class="list-group-item">
+                    <strong>@Html.DisplayNameFor(model => model.Ingresso.IngressoEstudante)</strong> @Html.DisplayFor(model => model.Ingresso.IngressoEstudante)
+                </li>
+            </ul>
+
+            <a asp-page="/Edit" asp-route-id="@Model.Ingresso.IngressoId" class="btn btn-primary mt-3">Editar</a>
+        </div>
+    </div>
+</div>

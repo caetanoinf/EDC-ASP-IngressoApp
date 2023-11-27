@@ -1,0 +1,83 @@
+﻿@page
+@model IngressosAppWeb.Pages.EditModel
+
+
+<div class="container-md mt-5">
+    <h2>@ViewData["Title"]</h2>
+
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="Ingresso.IngressoId" />
+
+        <div class="form-group mt-2">
+            <label asp-for="Ingresso.NomeEvento"></label>
+            <input asp-for="Ingresso.NomeEvento" class="form-control" />
+            <span asp-validation-for="Ingresso.NomeEvento" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label asp-for="Ingresso.DataEvento"></label>
+            <input asp-for="Ingresso.DataEvento" type="datetime-local" class="form-control" />
+            <span asp-validation-for="Ingresso.DataEvento" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label asp-for="Ingresso.Descricao"></label>
+            <textarea asp-for="Ingresso.Descricao" class="form-control"></textarea>
+            <span asp-validation-for="Ingresso.Descricao" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label asp-for="Ingresso.ImagemUrl"></label>
+            <input asp-for="Ingresso.ImagemUrl" class="form-control" />
+            <span asp-validation-for="Ingresso.ImagemUrl" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label asp-for="Ingresso.Valor"></label>
+            <input asp-for="Ingresso.Valor" type="number" class="form-control" />
+            <span asp-validation-for="Ingresso.Valor" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label asp-for="Ingresso.QuantidadeDisponivel"></label>
+            <input asp-for="Ingresso.QuantidadeDisponivel" type="number" class="form-control" />
+            <span asp-validation-for="Ingresso.QuantidadeDisponivel" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label asp-for="Ingresso.IngressoEstudante"></label>
+            <input asp-for="Ingresso.IngressoEstudante" type="checkbox" class="form-check-input" />
+            <span asp-validation-for="Ingresso.IngressoEstudante" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label asp-for="Ingresso.Localizacao"></label>
+            <input asp-for="Ingresso.Localizacao" class="form-control" />
+            <span asp-validation-for="Ingresso.Localizacao" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-2">
+            <label asp-for="Ingresso.Categoria"></label>
+            <select asp-for="Ingresso.Categoria" class="form-control">
+                <option value="">Selecione uma categoria</option>
+                <option value="Show">Show</option>
+                <option value="Esporte">Esporte</option>
+                <option value="Educação">Educação</option>
+                <option value="Festa">Festa</option>
+                <option value="Teatro">Teatro</option>
+            </select>
+            <span asp-validation-for="Ingresso.Categoria" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-2">
+            <input type="submit" value="Salvar Alterações" class="btn btn-primary">
+            <input type="submit" value="Excluir" class="btn btn-danger" asp-page-handler="Delete" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

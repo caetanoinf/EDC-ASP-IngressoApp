@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+
+<section class="container">
+    <h1>Eventos em destaque</h1>
+    <ul class="list-unstyled row mt-4">
+        @foreach (var ingresso in Model.ListaIngressos)
+        {
+            <li class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">@ingresso.NomeEvento</h2>
+                        <img src="@ingresso.ImagemUrl" alt="@ingresso.NomeEvento" class="img-fluid rounded mt-4" />
+                        <p class="card-text mt-4">@ingresso.Descricao</p>
+                        <p><strong>Local do Evento:</strong> @ingresso.Localizacao</p>
+                        <p><strong>Data do Evento:</strong> @ingresso.DataEvento.ToShortDateString()</p>
+                        <p><strong>Valor:</strong>@ingresso.Valor.ToString("C")</p>
+                        <p><strong>Categoria:</strong> @ingresso.Categoria</p>
+                        <a asp-page="/Detail" asp-route-id="@ingresso.IngressoId" asp-route-slug="@ingresso.NomeSlug" class="btn btn-primary">Ver mais</a>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</section>
