@@ -15,7 +15,6 @@
                         <p><strong>Local do Evento:</strong> @ingresso.Localizacao</p>
                         <p><strong>Data do Evento:</strong> @ingresso.DataEvento.ToShortDateString()</p>
                         <p><strong>Valor:</strong>@ingresso.Valor.ToString("C")</p>
-                        <p><strong>Categoria:</strong> @ingresso.Categoria</p>
                         <a asp-page="/Detail" asp-route-id="@ingresso.IngressoId" asp-route-slug="@ingresso.NomeSlug" class="btn btn-primary">Ver mais</a>
                     </div>
                 </div>

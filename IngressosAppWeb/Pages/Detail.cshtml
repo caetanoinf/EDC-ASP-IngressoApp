@@ -20,14 +20,22 @@
                     <strong>@Html.DisplayNameFor(model => model.Ingresso.Valor):</strong> @Html.DisplayFor(model => model.Ingresso.Valor)
                 </li>
                 <li class="list-group-item">
-                    <strong>@Html.DisplayNameFor(model => model.Ingresso.Categoria):</strong> @Html.DisplayFor(model => model.Ingresso.Categoria)
-                </li>
-                <li class="list-group-item">
                     <strong>@Html.DisplayNameFor(model => model.Ingresso.QuantidadeDisponivel):</strong> @Html.DisplayFor(model => model.Ingresso.QuantidadeDisponivel) ingressos disponíveis
-                 </li>
-                <li class="list-group-item">
-                    <strong>@Html.DisplayNameFor(model => model.Ingresso.IngressoEstudante)</strong> @Html.DisplayFor(model => model.Ingresso.IngressoEstudante)
                 </li>
+                @if (Model.Tipo is not null)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.Tipo.Nome):</strong> 
+                        @Html.DisplayFor(model => model.Tipo.Nome)
+                    </li>
+                }
+                @if (Model.Ingresso.Categorias.Count > 0)
+                {
+                    <li class="list-group-item">
+                        <strong>@Html.DisplayNameFor(model => model.Ingresso.Categorias):</strong> 
+                        @string.Join(", ", Model.Ingresso.Categorias.Select(item => item.Descricao))
+                    </li>
+                }
             </ul>
 
             <a asp-page="/Edit" asp-route-id="@Model.Ingresso.IngressoId" class="btn btn-primary mt-3">Editar</a>

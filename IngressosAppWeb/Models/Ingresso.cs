@@ -19,8 +19,6 @@ public class Ingresso
     [Display(Name= "Local do evento")]
     public string Localizacao { get; set; }
 
-    public string Categoria { get; set; }
-    
     [Display(Name = "Descrição")]
     public string Descricao { get; set; }
 
@@ -35,7 +33,8 @@ public class Ingresso
     public int QuantidadeDisponivel { get; set; }
     
     public bool Disponivel { get; set; }
-
-    [Display(Name = "Apenas estudante?")]
-    public bool IngressoEstudante { get; set; }
+    
+    [Display(Name = "Tipo")]
+    public int? TipoId { get; set; }
+    public ICollection<Categoria>? Categorias { get; set; }
 }

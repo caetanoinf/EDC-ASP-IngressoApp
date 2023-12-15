@@ -1,11 +1,14 @@
+using IngressosAppWeb.Data;
 using IngressosAppWeb.Services;
+using IngressosAppWeb.Services.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddSingleton<IIngressoService>(new IngressoService());
-builder.Services.AddMvc().AddNToastNotifyToastr();
+builder.Services.AddRazorPages().AddNToastNotifyToastr();
+builder.Services.AddTransient<IIngressoService, IngressoService>();
+builder.Services.AddDbContext<AppDbContext>();
 
 var app = builder.Build();
 
@@ -17,13 +20,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// var context = new AppDbContext();
+// context.Database.Migrate();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseNToastNotify();
 
 app.UseRouting();
-
-app.UseAuthorization();
 
 app.MapRazorPages();
 

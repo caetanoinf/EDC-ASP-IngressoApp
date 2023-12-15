@@ -2,6 +2,7 @@ using IngressosAppWeb.Models;
 using IngressosAppWeb.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using NToastNotify;
 
 namespace IngressosAppWeb.Pages;
@@ -10,6 +11,9 @@ public class EditModel : PageModel
 {
     private IIngressoService _service;
     private IToastNotification _toastNotification;
+    
+    public SelectList TipoOptionItems { get; set; }
+    public SelectList CategoriaOptionItems { get; set; }
 
     public EditModel(IIngressoService ingressoService, IToastNotification toastNotification)
     {
@@ -19,6 +23,9 @@ public class EditModel : PageModel
 
     [BindProperty]
     public Ingresso Ingresso { get; set; }
+    
+    [BindProperty]
+    public IList<int> CategoriaIds { get; set; }
 
     public IActionResult OnGet(int id)
     {
@@ -29,6 +36,12 @@ public class EditModel : PageModel
             return NotFound();
         }
 
+        CategoriaIds = Ingresso.Categorias.Select(item => item.CategoriaId).ToList();
+
+        TipoOptionItems = new SelectList(_service.ObterTodosOsTipos(), nameof(Tipo.TipoId), nameof(Tipo.Nome));
+        CategoriaOptionItems = new SelectList(_service.ObterTodasAsCategorias(), nameof(Categoria.CategoriaId),
+            nameof(Categoria.Descricao));
+
         ViewData["Title"] = Ingresso.NomeEvento;
 
         return Page();
@@ -36,6 +49,9 @@ public class EditModel : PageModel
 
     public IActionResult OnPost()
     {
+        Ingresso.Categorias = _service.ObterTodasAsCategorias().Where(item => CategoriaIds.Contains(item.CategoriaId))
+            .ToList();
+        
         if (!ModelState.IsValid)
         {
             return Page();
