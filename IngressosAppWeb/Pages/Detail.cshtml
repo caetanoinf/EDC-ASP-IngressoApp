@@ -25,11 +25,11 @@
                 @if (Model.Tipo is not null)
                 {
                     <li class="list-group-item">
-                        <strong>@Html.DisplayNameFor(model => model.Tipo.Nome):</strong> 
+                        <strong>@Html.DisplayNameFor(model => model.Ingresso.TipoId):</strong> 
                         @Html.DisplayFor(model => model.Tipo.Nome)
                     </li>
                 }
-                @if (Model.Ingresso.Categorias.Count > 0)
+                @if (Model.Ingresso.Categorias?.Count > 0)
                 {
                     <li class="list-group-item">
                         <strong>@Html.DisplayNameFor(model => model.Ingresso.Categorias):</strong> 

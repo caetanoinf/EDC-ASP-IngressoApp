@@ -8,6 +8,11 @@ public class AppDbContext : DbContext
     public DbSet<Ingresso> Ingresso { get; set; }
     public DbSet<Tipo> Tipo { get; set; }
     public DbSet<Categoria> Categoria { get; set; }
+
+    public AppDbContext()
+    {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

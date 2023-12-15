@@ -36,7 +36,12 @@ public class EditModel : PageModel
             return NotFound();
         }
 
-        CategoriaIds = Ingresso.Categorias.Select(item => item.CategoriaId).ToList();
+        CategoriaIds = new List<int>();
+
+        if (Ingresso.Categorias?.Count > 0)
+        {
+            CategoriaIds = Ingresso.Categorias.Select(item => item.CategoriaId).ToList();
+        }
 
         TipoOptionItems = new SelectList(_service.ObterTodosOsTipos(), nameof(Tipo.TipoId), nameof(Tipo.Nome));
         CategoriaOptionItems = new SelectList(_service.ObterTodasAsCategorias(), nameof(Categoria.CategoriaId),
