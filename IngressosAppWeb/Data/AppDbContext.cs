@@ -1,9 +1,10 @@
 using IngressosAppWeb.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace IngressosAppWeb.Data;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext
 {
     public DbSet<Ingresso> Ingresso { get; set; }
     public DbSet<Tipo> Tipo { get; set; }

@@ -1,5 +1,6 @@
 using IngressosAppWeb.Models;
 using IngressosAppWeb.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -7,6 +8,7 @@ using NToastNotify;
 
 namespace IngressosAppWeb.Pages;
 
+[Authorize]
 public class EditModel : PageModel
 {
     private IIngressoService _service;
