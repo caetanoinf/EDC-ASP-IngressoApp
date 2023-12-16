@@ -11,6 +11,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.14" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.14">
       <PrivateAssets>all</PrivateAssets>
@@ -23,10 +24,29 @@
 
   <ItemGroup>
     <Content Remove="appsettings.Development.json" />
+    <Content Remove="Pages\Categorias\**" />
+    <Content Remove="Data\Migrations\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
+    <Folder Include="Pages\Tipo\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\Categorias\**" />
+    <Compile Include="Data\Migrations\20231216143040_AdicionarCargaInicialCategoria.Designer.cs" />
+    <Compile Remove="Data\Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Pages\Categorias\**" />
+    <EmbeddedResource Remove="Data\Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\Categorias\**" />
+    <None Remove="ScaffoldingReadMe.txt" />
+    <None Remove="Data\Migrations\**" />
   </ItemGroup>
 
 </Project>

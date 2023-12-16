@@ -1,12 +1,13 @@
-﻿using IngressosAppWeb.Models;
+﻿using IngressosAppWeb.Data;
+using IngressosAppWeb.Models;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace IngressosAppWeb.Data.Migrations
+namespace IngressosAppWeb.Migrations
 {
     /// <inheritdoc />
-    public partial class AdicionarCargaInicialCategoria : Migration
+    public partial class CargaInicialCategoria : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -9,11 +9,6 @@ public class AppDbContext : IdentityDbContext
     public DbSet<Ingresso> Ingresso { get; set; }
     public DbSet<Tipo> Tipo { get; set; }
     public DbSet<Categoria> Categoria { get; set; }
-
-    public AppDbContext()
-    {
-        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-    }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -22,8 +17,8 @@ public class AppDbContext : IdentityDbContext
             .AddJsonFile("appsettings.json")
             .Build();
 
-        string conn = config.GetConnectionString("Conn");
+        string conn = config.GetConnectionString("ConnSqLite");
 
-        optionsBuilder.UseNpgsql(conn);
+        optionsBuilder.UseSqlite(conn);
     }
 }
